@@ -68,7 +68,6 @@ public class Main {
             while (!isFeasible(A, addVectors(x, scaleVector(alpha, deltaX), true), b)) {
                 alpha *= 0.9;
                 if (alpha < epsilon) {
-                    System.out.println("Alpha too small; stopping to avoid instability.");
                     return x;
                 }
             }
