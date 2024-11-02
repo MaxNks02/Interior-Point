@@ -58,7 +58,7 @@ public class Main {
         double[] x = new double[n];
         Arrays.fill(x, 1.0);
         int maxIters = 100000;
-        double mu = 0.9;
+        double mu = 0.1;
         double alpha = alphaStart;
 
         for (int iter = 0; iter < maxIters; iter++) {
@@ -175,7 +175,7 @@ public class Main {
         double alpha2 = 0.9;
 
 
-        // Test Case 1
+        System.out.println("\nTest Case 1:");
         double[] c1 = {3, 1};
         double[][] A1 = {
                 {1, 2},
@@ -183,11 +183,21 @@ public class Main {
                 {2, 1}
         };
         double[] b1 = {4, 10, 3};
-        System.out.println("\nTest Case 1:");
+        System.out.println("input :");
+        System.out.println("c=(3, 1)");
+        System.out.println("""
+                A = [1, 2]
+                    [3, 4]
+                    [2, 1]
+                """);
+
+        System.out.println("b=(4, 10, 3)");
+        System.out.println("output : ");
         testCase(A1, b1, c1, alpha1, epsilon);
         testCase(A1, b1, c1, alpha2, epsilon);
 
-        // Test Case 2
+
+        System.out.println("\nTest Case 2:");
         double[] c2 = {2, 1, 1};
         double[][] A2 = {
                 {1, 1, 1},
@@ -195,13 +205,19 @@ public class Main {
                 {1, 0, 3}
         };
         double[] b2 = {5, 8, 7};
-        System.out.println("\nTest Case 2:");
+        System.out.println("c=(2, 1, 1)");
+        System.out.println("""
+                A = [1, 1, 1]
+                    [2, 1, 0]
+                    [1, 0, 3]
+                """);
+
+        System.out.println("b=(5, 8, 7)");
         testCase(A2, b2, c2, alpha1, epsilon);
         testCase(A2, b2, c2, alpha2, epsilon);
 
 
-
-        // Test Case 4: Larger Feasible Region
+        System.out.println("\nTest Case 3:");
         double[] c4 = {5, 3, 2};
         double[][] A4 = {
                 {1, 1, 1},
@@ -209,11 +225,22 @@ public class Main {
                 {2, 5, 5}
         };
         double[] b4 = {10, 20, 15};
-        System.out.println("\nTest Case 3:");
+        System.out.println("input :");
+        System.out.println("c=(5, 3, 2)");
+        System.out.println("""
+                A = [1, 1, 1]
+                    [4, 2, 3]
+                    [2, 5, 5]
+                """);
+
+        System.out.println("b=(10, 20, 15)");
+        System.out.println("output : ");
+
         testCase(A4, b4, c4, alpha1, epsilon);
         testCase(A4, b4, c4, alpha2, epsilon);
 
-        // Test Case 5: Solution on the Constraint Boundary
+
+        System.out.println("\nTest Case 4:");
         double[] c5 = {3, 2};
         double[][] A5 = {
                 {1, 1},
@@ -221,11 +248,43 @@ public class Main {
                 {1, 0}
         };
         double[] b5 = {5, 12, 4};
-        System.out.println("\nTest Case 4:");
+        System.out.println("input :");
+        System.out.println("c=(3, 2)");
+        System.out.println("""
+                A = [1, 1]
+                    [2, 3]
+                    [1, 0]
+                """);
+
+        System.out.println("b=(5, 12, 4)");
+        System.out.println("output : ");
         testCase(A5, b5, c5, alpha1, epsilon);
         testCase(A5, b5, c5, alpha2, epsilon);
-    }
 
+        System.out.println("\nTest Case 5:");
+        double[] c = {3, 5, 4};
+        double[][] A = {
+                {2, 3, 0},
+                {2, 5, 10},
+                {3, 2, 4}
+        };
+        double[] b = {8, 10, 15};
+
+        System.out.println("input :");
+        System.out.println("c=(3, 5, 4)");
+        System.out.println("""
+                A = [2, 3, 0]
+                    [2, 5, 10]
+                    [3, 2, 4]
+                """);
+
+        System.out.println("b=(8, 10, 15)");
+        System.out.println("output : ");
+        testCase(A, b, c, alpha1, epsilon);
+        testCase(A, b, c, alpha2, epsilon);
+
+
+    }
     public static void main(String[] args) {
         runTests();
     }
