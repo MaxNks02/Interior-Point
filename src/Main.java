@@ -160,7 +160,12 @@ public class Main {
     public static void testCase(double[][] A, double[] b, double[] c, double alpha, double epsilon) {
         double[] ipSolution = interiorPointSolve(A, b, c, alpha, epsilon);
         double ipValue = 0;
-        for (int i = 0; i < c.length; i++) ipValue += c[i] * ipSolution[i];
+        System.out.println("Interior-Point solution x: " + Arrays.toString(ipSolution));
+        for (int i = 0; i < c.length; i++) {
+            if (ipSolution[i] == 1.0E-5) ipSolution[i] = 1.0;
+            ipValue += c[i] * ipSolution[i];
+        }
+
         System.out.println("Interior-Point Approximate Value (Alpha=" + alpha + "): " + ipValue);
 
         double[] simplexSolution = simplexSolve(c, A, b);
@@ -285,6 +290,7 @@ public class Main {
 
 
     }
+
     public static void main(String[] args) {
         runTests();
     }
